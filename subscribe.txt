@@ -1,7 +1,0 @@
-{
- "servers": [{
-   "url": "ss://YWVzLTI1Ni1jZmI6NjUxNTExMjhAMTAzLjEuMTUyLjUzOjI4NjQy"
-  },{
-   "url": "ss://YWVzLTI1Ni1jZmI6NjUxNTExMjhANDUuMzIuMTEyLjQ1OjEyMjU3"
-  }]
-}
