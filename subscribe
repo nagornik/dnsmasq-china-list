@@ -1,6 +1,6 @@
 {
  "servers": [{
-   "url": "https://raw.githubusercontent.com/Fndroid/ss-subscribe/master/test/subscrib-data"
+   "url": "https://raw.githubusercontent.com/nagornik/dnsmasq-china-list/master/subscribe"
   },{
    "url": "ss://YWVzLTI1Ni1jZmI6NjUxNTExMjhAMTAzLjEuMTUyLjUzOjI4NjQy"
   }]
