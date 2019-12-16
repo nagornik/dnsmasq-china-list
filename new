@@ -1,3 +1,37 @@
+apt-get install libsodium13
 QWlRu47bVu1x
-
 9BDaW28MSRYi
+
+apt-get install python-pip
+pip install shadowsocks
+sslocal -s 34.92.7.230 -p 22222 -k 65151128 -b 127.0.0.1 -l 1080
+
+apt-get install redsocks
+nano /etc/default/redsocks
+
+START=yes
+
+nano /etc/redsocks.conf
+192.168.1.1
+
+curl 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest' | grep ipv4 | grep CN | awk -F\| '{ printf("%s/%d\n", $4, 32-log($5)/log(2)) }' > /tmp/chnroute.txt
+
+SS_SERVER_IP=34.92.7.230 
+iptables -t nat -N REDSOCKS
+iptables -t nat -A REDSOCKS -d $SS_SERVER_IP -j RETURN
+iptables -t nat -A REDSOCKS -d 0.0.0.0/8 -j RETURN
+iptables -t nat -A REDSOCKS -d 10.0.0.0/8 -j RETURN
+iptables -t nat -A REDSOCKS -d 127.0.0.0/8 -j RETURN
+iptables -t nat -A REDSOCKS -d 169.254.0.0/16 -j RETURN
+iptables -t nat -A REDSOCKS -d 172.16.0.0/12 -j RETURN
+iptables -t nat -A REDSOCKS -d 192.168.0.0/16 -j RETURN
+iptables -t nat -A REDSOCKS -d 224.0.0.0/4 -j RETURN
+iptables -t nat -A REDSOCKS -d 240.0.0.0/4 -j RETURN
+while read subnet;
+do
+sudo iptables -t nat -A REDSOCKS -d $subnet -j RETURN
+done < /tmp/chnroute.txt
+iptables -t nat -A REDSOCKS -p tcp -j REDIRECT --to-ports 12345
+iptables -t nat -A PREROUTING -p tcp -j REDSOCKS
+
+/etc/init.d/redsocks start
