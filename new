@@ -1,4 +1,25 @@
-apt-get install libsodium13
+apt-get install python-pip
+pip install shadowsocks
+
+nano /etc/shadowsocks.json
+
+sslocal -c /etc/shadowsocks.json -d start
+
+ps aux | grep sslocal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 QWlRu47bVu1x
 9BDaW28MSRYi
 
