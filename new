@@ -9,7 +9,15 @@ ps aux | grep sslocal
 
 
 
-
+{
+"server":"34.92.7.230",
+"server_port":22222,
+"local_address": "192.168.123.63",
+"local_port":1080,
+"password":"65151128",
+"timeout":600,
+"method":"aes-256-cfb"
+}
 
 
 
